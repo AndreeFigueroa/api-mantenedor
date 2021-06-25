@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="2.06">
+  <testsuite name="Post Endpoints Patient" errors="0" failures="0" skipped="0" timestamp="2021-05-29T00:38:42" time="1.963" tests="4">
+    <testcase classname="Post Endpoints Patient should create a new Patient" name="Post Endpoints Patient should create a new Patient" time="0.045">
+    </testcase>
+    <testcase classname="Post Endpoints Patient should not create a new Patient" name="Post Endpoints Patient should not create a new Patient" time="0.005">
+    </testcase>
+    <testcase classname="Post Endpoints Patient should get a  Patient 1" name="Post Endpoints Patient should get a  Patient 1" time="0.021">
+    </testcase>
+    <testcase classname="Post Endpoints Patient should get a  Patient 1" name="Post Endpoints Patient should get a  Patient 1" time="0.015">
+    </testcase>
+  </testsuite>
+</testsuites>
