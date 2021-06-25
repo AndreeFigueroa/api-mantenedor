@@ -1,9 +1,8 @@
 
 import jwt from 'jsonwebtoken';
 
-
-
-const key = process.env.KEY_SECRET.toString();
+const key = process.env.KEY_SECRET;
+console.log('[authService], _key_ ', key)
 const jwtConfig = {
     type: 'Bearer',
     azp: 'apiTest',
@@ -37,27 +36,27 @@ function generateAccessToken() {
     };
     return token;
 }
-    
+
 
 
 function verify(accessToken) {
-    try {     
+    try {
       let accessTokenTmp = accessToken.toString();
-      
+
       if (accessTokenTmp.startsWith(`${jwtConfig.type} `)) {
         accessTokenTmp = accessToken.substring(jwtConfig.type.length);
       }
-  
+
       accessTokenTmp = accessTokenTmp.trim();
-      
+
       return {
         decoded: jwt.verify(accessTokenTmp, key),
         accessToken: accessToken
       };
-      
+
     } catch(error) {
       console.error('Error en JWT', `${error}`);
-      
+
       return undefined;
     }
   }

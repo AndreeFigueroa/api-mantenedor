@@ -9,6 +9,9 @@ module.exports = function (schema, sequelize, sequelizeDefinition) {
     },
     name: {
       type: sequelizeDefinition.STRING
+    },
+    address: {
+      type: sequelizeDefinition.STRING
     }
   }, {
     timestamps: false,

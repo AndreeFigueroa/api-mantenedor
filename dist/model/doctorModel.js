@@ -1,7 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _prescriptionModel = _interopRequireDefault(require("./prescriptionModel"));
+
 module.exports = function (schema, sequelize, sequelizeDefinition) {
-  return sequelize.define('patient', {
+  return sequelize.define('doctor', {
     id: {
       type: sequelizeDefinition.INTEGER,
       autoIncrement: true,
@@ -16,10 +20,19 @@ module.exports = function (schema, sequelize, sequelizeDefinition) {
     email: {
       type: sequelizeDefinition.STRING
     },
+    address: {
+      type: sequelizeDefinition.STRING
+    },
     gender: {
       type: sequelizeDefinition.STRING
     },
+    specialty: {
+      type: sequelizeDefinition.STRING
+    },
     birthdate: {
+      type: sequelizeDefinition.STRING
+    },
+    password: {
       type: sequelizeDefinition.STRING
     },
     created_at: {
@@ -30,7 +43,7 @@ module.exports = function (schema, sequelize, sequelizeDefinition) {
     }
   }, {
     timestamps: false,
-    tableName: 'patient',
+    tableName: 'doctor',
     schema: schema
   });
 };

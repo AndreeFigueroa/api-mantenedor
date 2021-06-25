@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PatientModel = void 0;
+exports.PrescriptionModel = exports.DoctorModel = exports.BranchModel = exports.PatientModel = void 0;
 
 var _config = _interopRequireDefault(require("../config"));
 
@@ -38,3 +38,18 @@ var PatientModelref = require('./patientModel');
 
 var PatientModel = PatientModelref(schema, sequelize, Sequelize);
 exports.PatientModel = PatientModel;
+
+var BranchModelref = require('./branchModel');
+
+var BranchModel = BranchModelref(schema, sequelize, Sequelize);
+exports.BranchModel = BranchModel;
+
+var DoctorModelref = require('./doctorModel');
+
+var DoctorModel = DoctorModelref(schema, sequelize, Sequelize);
+exports.DoctorModel = DoctorModel;
+
+var PrescriptionModelref = require('./prescriptionModel');
+
+var PrescriptionModel = PrescriptionModelref(schema, sequelize, Sequelize);
+exports.PrescriptionModel = PrescriptionModel;

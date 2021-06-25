@@ -20,7 +20,6 @@ var _sequelizeconfig = require("../../model/sequelizeconfig");
 var _HttpException = require("../../utils/HttpException");
 
 function createPatient(patient) {
-  console.log(patient);
   DoValidatePatient(patient);
   patient.created_at = Date.now();
   patient.updated_at = Date.now();

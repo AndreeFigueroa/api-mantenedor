@@ -9,16 +9,12 @@ exports["default"] = void 0;
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _config = _interopRequireDefault(require("../../config"));
-
-var _dotenv = _interopRequireDefault(require("dotenv"));
-
-_dotenv["default"].config();
-
+var key = process.env.KEY_SECRET;
+console.log('[authService], _key_ ', key);
 var jwtConfig = {
   type: 'Bearer',
   azp: 'apiTest',
-  iss: '*',
+  iss: 'http://localhost:3000/',
   acr: '1',
   nbf: 0,
   defaultAud: 'apiTest',
@@ -26,6 +22,9 @@ var jwtConfig = {
 };
 
 function generateAccessToken() {
+  var secondsSinceEpoch = Math.round(Date.now() / 1000);
+  var expireTime = secondsSinceEpoch + 3600 * 12; //+ 12hras
+
   var jwta = {
     jti: "local",
     sub: "local api",
@@ -36,13 +35,15 @@ function generateAccessToken() {
     azp: jwtConfig.azp,
     acr: jwtConfig.acr,
     'allowed-origins': '*',
-    iat: 1622753317,
+    iat: secondsSinceEpoch,
+    exp: expireTime,
     claims: ''
   };
-  var token = process.env.TOKEN_SECRET.toString();
-  return _jsonwebtoken["default"].sign(jwta, token, {
-    expiresIn: '1h'
-  });
+  var token = {
+    access_token: _jsonwebtoken["default"].sign(jwta, key),
+    expire: expireTime
+  };
+  return token;
 }
 
 function verify(accessToken) {
@@ -54,7 +55,6 @@ function verify(accessToken) {
     }
 
     accessTokenTmp = accessTokenTmp.trim();
-    var key = process.env.KEY_SECRET.toString();
     return {
       decoded: _jsonwebtoken["default"].verify(accessTokenTmp, key),
       accessToken: accessToken

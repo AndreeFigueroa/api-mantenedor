@@ -1,3 +1,4 @@
+#!/bin/bash
 PROFILE=local
-. .env 
+. .env
 npm run server

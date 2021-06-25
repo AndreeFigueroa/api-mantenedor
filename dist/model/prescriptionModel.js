@@ -1,25 +1,22 @@
 "use strict";
 
 module.exports = function (schema, sequelize, sequelizeDefinition) {
-  return sequelize.define('patient', {
+  return sequelize.define('prescription', {
     id: {
       type: sequelizeDefinition.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    firstname: {
+    patient_name: {
       type: sequelizeDefinition.STRING
     },
-    lastname: {
+    patient_age: {
       type: sequelizeDefinition.STRING
     },
-    email: {
+    doctor_sign: {
       type: sequelizeDefinition.STRING
     },
-    gender: {
-      type: sequelizeDefinition.STRING
-    },
-    birthdate: {
+    rx: {
       type: sequelizeDefinition.STRING
     },
     created_at: {
@@ -30,7 +27,7 @@ module.exports = function (schema, sequelize, sequelizeDefinition) {
     }
   }, {
     timestamps: false,
-    tableName: 'patient',
+    tableName: 'prescription',
     schema: schema
   });
 };
